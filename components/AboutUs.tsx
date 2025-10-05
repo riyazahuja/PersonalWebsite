@@ -12,35 +12,30 @@ export default function AboutUs() {
       href: "https://www.linkedin.com/in/alexander-heckett-547a9b228/",
       initials: "XH",
     },
-    // {
-    //   name: "Dr. Jeremy Avigad",
-    //   role: "Advisory",
-    //   href: "https://www.andrew.cmu.edu/user/avigad/",
-    //   initials: "JA",
-    // },
-    // {
-    //   name: "Dr. Sean Welleck",
-    //   role: "Advisory",
-    //   href: "https://wellecks.com/",
-    //   initials: "SW",
-    // },
-    // {
-    //   name: "Dr. Prasad Tetali",
-    //   role: "Advisory",
-    //   href: "https://www.cmu.edu/math/people/faculty/tetali.html",
-    //   initials: "PT",
-    // },
     {
       name: "Shivansh Gour",
-      // role: "Cofounder",
       href: "https://s-os.dev",
       initials: "SG",
     },
     {
+      name: "Alex Willoughby",
+      href: "https://www.linkedin.com/in/alexander-willoughby-68a0b329a/",
+      initials: "AW",
+    },
+    {
+      name: "Arin Bhandari",
+      href: "https://www.linkedin.com/in/arin-bhandari/",
+      initials: "AB",
+    },
+    {
       name: "Tate Rowney",
-      // role: "Cofounder",
       href: "https://taterowney.com/",
       initials: "TR",
+    },
+    {
+      name: "Ishin Shah",
+      href: "https://www.linkedin.com/in/ishin-shah-562878212/",
+      initials: "IS",
     },
     
   ]
@@ -65,12 +60,13 @@ export default function AboutUs() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-4 p-4 hover:bg-gray-50 rounded transition-colors group cursor-hover"
+            // className="text-stagira-indigo hover:text-aureate-gold transition-colors cursor-hover"
           >
             <div className="w-12 h-12 bg-stagira-indigo rounded-full flex items-center justify-center">
               <span className="text-papyrus-white font-mono text-sm font-bold">{member.initials}</span>
             </div>
             <div>
-              <h4 className="font-medium text-stagira-indigo group-hover:underline">{member.name}</h4>
+              <h4 className="font-medium text-stagira-indigo group-hover:text-aureate-gold">{member.name}</h4>
               {/* <p className="text-sm text-graphite-gray">{member.role}</p> */}
             </div>
           </a>
