@@ -152,8 +152,7 @@ export default function Hero() {
         <source src="/videos/hero-background.mp4" type="video/mp4" />
       </video>
 
-
-      Overlay to ensure text is readable
+      {/* Overlay to ensure text is readable */}
       <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
       {/* Logo */}
