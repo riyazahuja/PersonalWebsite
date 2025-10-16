@@ -112,7 +112,7 @@
 
   /* Leon Bubova inspired styles */
   #hero {
-    width: 98vw;
+    width: 100vw;
     height: 100vh;
     margin: 0 auto;
     margin-bottom: 5rem;
@@ -122,6 +122,7 @@
     max-width: 750px;
     margin: 0 auto;
     padding: 0 8vw;
+    overflow: visible;
   }
 
   /* Navigation floating behavior */

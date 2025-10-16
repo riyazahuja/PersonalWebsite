@@ -86,6 +86,8 @@ const config: Config = {
         "fade-up": "fadeUp 0.25s cubic-bezier(0.25, 0.8, 0.5, 1)",
         "pulse-gold": "pulseGold 0.3s cubic-bezier(0.25, 0.8, 0.5, 1)",
         grow: "grow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1)",
+        "scroll-left": "scrollLeft 30s linear infinite",
+        "scroll-right": "scrollRight 30s linear infinite",
       },
       keyframes: {
         fadeUp: {
@@ -100,6 +102,14 @@ const config: Config = {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.05)" },
           "100%": { transform: "scale(1)" },
+        },
+        scrollLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        scrollRight: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },

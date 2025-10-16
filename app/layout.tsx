@@ -20,8 +20,8 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Stagira Labs",
-  description: "Commoditizing R&D",
+  title: "Riyaz Ahuja",
+  description: "Researcher in automated theorem proving and machine learning for formal mathematics",
   icons: {
     icon: "/favicon.ico",
   },

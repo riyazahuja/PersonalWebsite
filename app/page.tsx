@@ -1,23 +1,20 @@
 import Hero from "@/components/Hero"
-import WhoWeAre from "@/components/WhoWeAre"
-import Research from "@/components/Research"
-import Demo from "@/components/Demo"
-import HowItWorks from "@/components/HowItWorks"
-import AboutUs from "@/components/AboutUs"
-import Contact from "@/components/Contact"
+import AboutSection from "@/components/AboutSection"
+import NewsSection from "@/components/NewsSection"
+import ResearchSection from "@/components/ResearchSection"
+import ProjectsSection from "@/components/ProjectsSection"
+import OtherSection from "@/components/OtherSection"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <div id="site-content" className="max-w-3xl mx-auto px-12">
-        {/* <WhoWeAre /> */}
-        <Research />
-        <Demo />
-
-        {/* <HowItWorks /> */}
-        <AboutUs />
-        <Contact />
+      <div id="site-content" className="max-w-3xl mx-auto px-6 lg:px-12 overflow-visible">
+        <AboutSection />
+        <NewsSection />
+        <ResearchSection />
+        <ProjectsSection />
+        <OtherSection />
       </div>
     </main>
   )

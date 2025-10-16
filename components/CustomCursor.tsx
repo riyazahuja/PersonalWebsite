@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [isInHero, setIsInHero] = useState(true)
 
   useEffect(() => {
     // Check if device is desktop (has hover capability and pointer is fine)
@@ -32,6 +33,14 @@ export default function CustomCursor() {
     const updateCursor = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
       if (!isVisible) setIsVisible(true)
+
+      // Check if cursor is within hero section
+      const hero = document.getElementById("hero")
+      if (hero) {
+        const heroRect = hero.getBoundingClientRect()
+        const cursorInHero = e.clientY >= heroRect.top && e.clientY <= heroRect.bottom
+        setIsInHero(cursorInHero)
+      }
     }
 
     const handleMouseEnter = () => setIsHovering(true)
@@ -71,21 +80,21 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Main cursor dot - constant color and size */}
+      {/* Main cursor dot - changes color based on section */}
       <div
-        className={`fixed top-0 left-0 w-2 h-2 bg-stagira-indigo rounded-full pointer-events-none z-[9999] transition-opacity duration-150 ease-out ${
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] transition-all duration-300 ease-out ${
           isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        } ${isInHero ? "bg-papyrus-white" : "bg-stagira-indigo"}`}
         style={{
           transform: `translate(${position.x - 4}px, ${position.y - 4}px)`,
         }}
       />
 
-      {/* Outer ring - constant color, expanding radius */}
+      {/* Outer ring - changes color based on section, expanding radius */}
       <div
-        className={`fixed top-0 left-0 border border-stagira-indigo rounded-full pointer-events-none z-[9998] transition-all duration-100 ease-out ${
+        className={`fixed top-0 left-0 border rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out ${
           isVisible ? "opacity-30" : "opacity-0"
-        } ${isHovering ? "w-10 h-10" : "w-8 h-8"}`}
+        } ${isHovering ? "w-10 h-10" : "w-8 h-8"} ${isInHero ? "border-papyrus-white" : "border-stagira-indigo"}`}
         style={{
           transform: `translate(${position.x - (isHovering ? 20 : 16)}px, ${position.y - (isHovering ? 20 : 16)}px)`,
         }}

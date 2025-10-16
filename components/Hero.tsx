@@ -8,7 +8,8 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [activeSection, setActiveSection] = useState("")
-  const fullText = "hi, we're stagira."
+  const [isNavInHero, setIsNavInHero] = useState(true)
+  const fullText = "hi, i'm riyaz."
 
   useEffect(() => {
     let index = 0
@@ -41,6 +42,14 @@ export default function Hero() {
   const handleScrollUpdate = () => {
     const y = window.scrollY
     const navigation = document.getElementById("navigation")
+    const hero = document.getElementById("hero")
+
+    // Check if navigation is within hero section
+    if (hero && navigation) {
+      const heroBottom = hero.offsetHeight
+      const navTop = navigation.getBoundingClientRect().top + y
+      setIsNavInHero(navTop < heroBottom)
+    }
 
     if (navigation) {
       if (y > 1 && window.innerWidth >= 1160) {
@@ -52,10 +61,11 @@ export default function Hero() {
 
     // Determine active section based on scroll position
     const sections = [
-      { id: "research", element: document.getElementById("research") },
-      { id: "demo", element: document.getElementById("demo") },
       { id: "about", element: document.getElementById("about") },
-      { id: "contact", element: document.getElementById("contact") },
+      { id: "news", element: document.getElementById("news") },
+      { id: "research", element: document.getElementById("research") },
+      { id: "projects", element: document.getElementById("projects") },
+      { id: "other", element: document.getElementById("other") },
     ]
 
     const anchor = y + window.innerHeight / 3 // sampling point in viewport
@@ -75,9 +85,9 @@ export default function Hero() {
       }
     }
 
-    // If at the very bottom of the page, force "contact" as active
+    // If at the very bottom of the page, force "other" as active
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
-      currentSection = "contact"
+      currentSection = "other"
     }
 
     // Fallback: last section that started before the anchor
@@ -104,7 +114,7 @@ export default function Hero() {
   }, [])
 
   const handleScrollToContent = () => {
-    const element = document.getElementById("research")
+    const element = document.getElementById("about")
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
@@ -122,23 +132,37 @@ export default function Hero() {
   }
 
   const navItems = [
-    // { id: "who-we-are", label: "who we are" },
-    { id: "research", label: "research" },
-    // { id: "how-it-works", label: "how it works" },
-    { id: "demo", label: "demo" },
     { id: "about", label: "about" },
-    { id: "contact", label: "contact" },
+    { id: "news", label: "news" },
+    { id: "research", label: "research" },
+    { id: "projects", label: "projects" },
+    { id: "other", label: "other" },
   ]
 
   return (
-    <div id="hero" className="w-full h-screen relative">
+    <div id="hero" className="w-screen h-screen relative overflow-hidden bg-stagira-indigo">
+      {/* Blurred Background Video - zoomed and heavily blurred to fill margins */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+      </video>
+
+
+      Overlay to ensure text is readable
+      <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+
       {/* Logo */}
-      <div
+      {/* <div
         id="logo"
-        className="absolute top-12 left-12 w-15 h-15 border-stagira-indigo flex items-center justify-center cursor-hover"
+        className="absolute top-12 left-12 w-15 h-15 border-stagira-indigo flex items-center justify-center cursor-hover z-10"
       >
         <Image src="/images/logo.svg" alt="S" width={65} height={65} className="object-contain" />
-      </div>
+      </div> */}
 
       {/* Navigation */}
       <nav id="navigation" className="fixed top-12 right-12 text-right text-xl transition-all duration-1000 z-50">
@@ -147,17 +171,21 @@ export default function Hero() {
             <li key={item.id} className="relative">
               <button
                 onClick={() => handleNavClick(`#${item.id}`)}
-                className={`text-stagira-indigo hover:text-aureate-gold transition-colors duration-300 font-light cursor-hover ${
-                  activeSection === item.id ? "text-aureate-gold" : ""
+                className={`hover:text-aureate-gold transition-colors duration-300 font-light cursor-hover ${
+                  activeSection === item.id
+                    ? "text-aureate-gold"
+                    : isNavInHero
+                      ? "text-papyrus-white"
+                      : "text-stagira-indigo"
                 }`}
               >
                 {item.label}
               </button>
               {/* Active indicator dot */}
               <div
-                className={`absolute -right-4 top-1/2 transform -translate-y-1/2 w-1.5 h-1.5 bg-stagira-indigo rounded-full transition-all duration-300 ${
-                  activeSection === item.id ? "opacity-100 scale-100" : "opacity-0 scale-75"
-                }`}
+                className={`absolute -right-4 top-1/2 transform -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  isNavInHero ? "bg-papyrus-white" : "bg-stagira-indigo"
+                } ${activeSection === item.id ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
               />
             </li>
           ))}
@@ -165,24 +193,23 @@ export default function Hero() {
       </nav>
 
       {/* Welcome */}
-      <div id="welcome" className="absolute bottom-1/4 left-12">
+      <div id="welcome" className="absolute bottom-12 left-12 z-10">
         <div className="relative">
-          <h1 className="text-4xl font-mono mb-3 text-stagira-indigo">
-            <span>{displayText}</span>
-            <span
-              className={`inline-block w-0.5 h-10 bg-stagira-indigo ml-1 ${
-                showCursor && displayText === fullText ? "animate-blink" : ""
-              }`}
-            />
+          <h1 className="text-4xl font-mono mb-3 text-papyrus-white">
+        <span>{displayText}</span>
+        <span
+          className={`inline-block w-0.5 h-10 bg-papyrus-white ml-1 ${
+            showCursor && displayText === fullText ? "animate-blink" : ""
+          }`}
+        />
           </h1>
         </div>
-        <h2 className="text-xl text-graphite-gray mt-3 font-light">We're building automated mathematicians for collaborative discovery.</h2>
       </div>
 
       {/* Scroll indicator */}
-      <div id="to-bottom" className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center">
+      <div id="to-bottom" className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center z-10">
         <button onClick={handleScrollToContent} className="hover:opacity-70 transition-opacity cursor-hover">
-          <ChevronDown size={32} className="text-graphite-gray" />
+          <ChevronDown size={32} className="text-papyrus-white" />
         </button>
       </div>
     </div>
