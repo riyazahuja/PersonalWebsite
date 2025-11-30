@@ -1,23 +1,15 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [displayText, setDisplayText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const [isNavInHero, setIsNavInHero] = useState(true)
   const fullText = "hi, i'm riyaz."
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.0
-      videoRef.current.play().catch((e) => console.error("Video play failed", e))
-    }
-  }, [])
 
   useEffect(() => {
     let index = 0
@@ -158,7 +150,6 @@ export default function Hero() {
     <div id="hero" className="w-screen h-screen relative overflow-hidden bg-stagira-indigo">
       {/* Blurred Background Video - zoomed and heavily blurred to fill margins */}
       <video
-        ref={videoRef}
         autoPlay
         loop
         muted
