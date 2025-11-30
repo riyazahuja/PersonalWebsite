@@ -156,7 +156,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/assets/bg.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay to ensure text is readable */}
