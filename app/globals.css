@@ -139,6 +139,10 @@
     top: 35vh !important;
   }
 
+  .bottom-navigation {
+    top: calc(100vh - 300px) !important;
+  }
+
   h3 {
     font-size: 32px;
     margin-bottom: 60px;

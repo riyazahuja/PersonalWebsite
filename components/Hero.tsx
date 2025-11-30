@@ -52,10 +52,17 @@ export default function Hero() {
     }
 
     if (navigation) {
-      if (y > 1 && window.innerWidth >= 1160) {
+      const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50
+
+      if (isAtBottom && window.innerWidth >= 1160) {
+        navigation.classList.add("bottom-navigation")
+        navigation.classList.remove("moved-navigation")
+      } else if (y > 1 && window.innerWidth >= 1160) {
         navigation.classList.add("moved-navigation")
+        navigation.classList.remove("bottom-navigation")
       } else {
         navigation.classList.remove("moved-navigation")
+        navigation.classList.remove("bottom-navigation")
       }
     }
 
