@@ -1,13 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const cursorDotRef = useRef<HTMLDivElement>(null)
+  const cursorRingRef = useRef<HTMLDivElement>(null)
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const [isInHero, setIsInHero] = useState(true)
+  const positionRef = useRef({ x: 0, y: 0 })
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     // Check if device is desktop (has hover capability and pointer is fine)
@@ -26,12 +29,30 @@ export default function CustomCursor() {
     return () => window.removeEventListener("resize", checkIsDesktop)
   }, [])
 
+  // Update cursor position directly via DOM for performance
+  const updateCursorPosition = useCallback(() => {
+    if (cursorDotRef.current) {
+      cursorDotRef.current.style.transform = `translate(${positionRef.current.x - 4}px, ${positionRef.current.y - 4}px)`
+    }
+    if (cursorRingRef.current) {
+      const offset = isHovering ? 20 : 16
+      cursorRingRef.current.style.transform = `translate(${positionRef.current.x - offset}px, ${positionRef.current.y - offset}px)`
+    }
+  }, [isHovering])
+
   useEffect(() => {
     // Only add cursor functionality on desktop
     if (!isDesktop) return
 
     const updateCursor = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
+      positionRef.current = { x: e.clientX, y: e.clientY }
+      
+      // Use requestAnimationFrame for smooth updates
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      rafRef.current = requestAnimationFrame(updateCursorPosition)
+      
       if (!isVisible) setIsVisible(true)
 
       // Check if cursor is within hero section
@@ -72,8 +93,12 @@ export default function CustomCursor() {
         el.removeEventListener("mouseenter", handleMouseEnter)
         el.removeEventListener("mouseleave", handleMouseLeave)
       })
+      
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
     }
-  }, [isVisible, isDesktop])
+  }, [isVisible, isDesktop, updateCursorPosition])
 
   // Don't render cursor on non-desktop devices
   if (!isDesktop) return null
@@ -82,22 +107,20 @@ export default function CustomCursor() {
     <>
       {/* Main cursor dot - changes color based on section */}
       <div
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] transition-all duration-300 ease-out ${
+        ref={cursorDotRef}
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] ${
           isVisible ? "opacity-100" : "opacity-0"
         } ${isInHero ? "bg-papyrus-white" : "bg-stagira-indigo"}`}
-        style={{
-          transform: `translate(${position.x - 4}px, ${position.y - 4}px)`,
-        }}
+        style={{ willChange: "transform", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
       />
 
       {/* Outer ring - changes color based on section, expanding radius */}
       <div
-        className={`fixed top-0 left-0 border rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out ${
+        ref={cursorRingRef}
+        className={`fixed top-0 left-0 border rounded-full pointer-events-none z-[9998] ${
           isVisible ? "opacity-30" : "opacity-0"
         } ${isHovering ? "w-10 h-10" : "w-8 h-8"} ${isInHero ? "border-papyrus-white" : "border-stagira-indigo"}`}
-        style={{
-          transform: `translate(${position.x - (isHovering ? 20 : 16)}px, ${position.y - (isHovering ? 20 : 16)}px)`,
-        }}
+        style={{ willChange: "transform", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transition: "width 0.15s ease-out, height 0.15s ease-out" }}
       />
     </>
   )

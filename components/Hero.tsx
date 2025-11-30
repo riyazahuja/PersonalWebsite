@@ -1,15 +1,66 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [displayText, setDisplayText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const [isNavInHero, setIsNavInHero] = useState(true)
   const fullText = "hi, i'm riyaz."
+
+  // Safari video autoplay fix
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Ensure muted is set programmatically for Safari
+    video.muted = true
+    video.setAttribute("muted", "")
+    video.setAttribute("playsinline", "")
+    video.setAttribute("webkit-playsinline", "")
+    
+    const attemptPlay = () => {
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If autoplay fails, try again after a short delay
+          setTimeout(() => {
+            video.play().catch(() => {})
+          }, 100)
+        })
+      }
+    }
+
+    // Try to play immediately
+    attemptPlay()
+
+    // Also try when video data is loaded
+    video.addEventListener("loadeddata", attemptPlay)
+    video.addEventListener("canplay", attemptPlay)
+
+    // Fallback: play on any user interaction
+    const handleInteraction = () => {
+      video.play().catch(() => {})
+      document.removeEventListener("click", handleInteraction)
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("scroll", handleInteraction)
+    }
+    document.addEventListener("click", handleInteraction)
+    document.addEventListener("touchstart", handleInteraction)
+    document.addEventListener("scroll", handleInteraction)
+
+    return () => {
+      video.removeEventListener("loadeddata", attemptPlay)
+      video.removeEventListener("canplay", attemptPlay)
+      document.removeEventListener("click", handleInteraction)
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("scroll", handleInteraction)
+    }
+  }, [])
 
   useEffect(() => {
     let index = 0
@@ -150,11 +201,13 @@ export default function Hero() {
     <div id="hero" className="w-screen h-screen relative overflow-hidden bg-stagira-indigo">
       {/* Blurred Background Video - zoomed and heavily blurred to fill margins */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        preload="auto"
       >
         <source src="/assets/bg.mp4" type="video/mp4" />
       </video>
