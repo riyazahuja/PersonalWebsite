@@ -1,11 +1,11 @@
 "use client"
 
 import { otherProjects } from "@/lib/data"
-import { Github, ExternalLink, Play } from "lucide-react"
+import { Github, ExternalLink, Play, FileText } from "lucide-react"
 
 export default function ProjectsSection() {
   const renderProjectLinks = (project: typeof otherProjects[0]) => {
-    const links = []
+    const links: { href: string; icon: typeof Github; label: string }[] = []
     if (project.links.github) {
       links.push({ href: project.links.github, icon: Github, label: "GitHub" })
     }
@@ -14,6 +14,9 @@ export default function ProjectsSection() {
     }
     if (project.links.demo) {
       links.push({ href: project.links.demo, icon: Play, label: "Demo" })
+    }
+    if (project.links.paper) {
+      links.push({ href: project.links.paper, icon: FileText, label: "Paper" })
     }
     return links
   }

@@ -5,7 +5,7 @@ import { ExternalLink, Video, FileText } from "lucide-react"
 
 export default function OtherSection() {
   const renderTalkLinks = (talk: typeof talks[0]) => {
-    const links = []
+    const links: { href: string; icon: typeof Video; label: string }[] = []
     if (talk.links?.video) {
       links.push({ href: talk.links.video, icon: Video, label: "Video" })
     }
@@ -14,6 +14,9 @@ export default function OtherSection() {
     }
     if (talk.links?.website) {
       links.push({ href: talk.links.website, icon: ExternalLink, label: "Website" })
+    }
+    if (talk.links?.paper) {
+      links.push({ href: talk.links.paper, icon: FileText, label: "Paper" })
     }
     return links
   }

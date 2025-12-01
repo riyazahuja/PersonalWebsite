@@ -27,6 +27,7 @@ export interface OtherProject {
     github?: string
     website?: string
     demo?: string
+    paper?: string
   }
 }
 
@@ -39,6 +40,7 @@ export interface Talk {
     video?: string
     slides?: string
     website?: string
+    paper?: string
   }
 }
 
@@ -54,39 +56,39 @@ export interface PastWork {
 export const newsItems: NewsItem[] = [
   {
     id: "news-1",
-    date: "2025-03-01",
-    description: "Named as an ACS Scholar",
-    link: "#"
+    date: "2025-11-30",
+    description: "cLean milestone report released",
+    link: "https://github.com/riyazahuja/clean"
   },
   {
     id: "news-2",
-    date: "2025-01-15",
-    description: "Released Agora v0.1 to the public",
-    link: "#"
+    date: "2025-09-23",
+    description: "Named as an ACS Scholar",
+    // link: "#"
   },
   {
     id: "news-3",
-    date: "2025-01-15",
-    description: "Released and gave a talk on LeanM2 at CMU",
-    link: "#"
+    date: "2025-09-10",
+    description: "Public release of Agora v0.1",
+    link: "https://agora.stagiralabs.com"
   },
   {
     id: "news-4",
-    date: "2024-12-10",
+    date: "2025-04-24",
     description: "Won the Richard A. Moore Award in Mathematical Sciences",
-    link: "#"
+    // link: "#"
   },
   {
     id: "news-5",
-    date: "2024-12-10",
+    date: "2025-04-24",
     description: "Presented ImProver at ICLR 2025 in Singapore",
-    link: "#"
+    link: "https://iclr.cc/virtual/2025/poster/28980"
   },
   {
     id: "news-6",
-    date: "2024-12-10",
-    description: "Invited to the Simons Institute and SLMath joint workshop on AI for Mathematics",
-    link: "#"
+    date: "2025-04-07",
+    description: "Attended the Simons Institute and SLMath joint workshop on AI for Mathematics",
+    link: "https://simons.berkeley.edu/workshops/simons-institute-theory-computing-slmath-joint-workshop-ai-mathematics-theoretical"
   }
 ]
 
@@ -98,8 +100,8 @@ export const publications: Publication[] = [
     venue: "ICLR 2025",
     description: "Agentic proof optimization framework for Lean for the rewriting of undergraduate and competition-level theorems.",
     links: {
-      paper: "#",
-      github: "#"
+      paper: "https://arxiv.org/abs/2410.04753",
+      github: "https://github.com/riyazahuja/improver"
     }
   },
   {
@@ -109,7 +111,8 @@ export const publications: Publication[] = [
     venue: "In Progress",
     description: "Generalized RL Pipeline for training proof optimizers for the optimization of research-level Lean theorems at scale, across metrics, and at low cost.",
     links: {
-      github: "#"
+      paper: "#",
+      github: "https://github.com/riyazahuja/improver"
     },
     inProgress: true
   },
@@ -120,18 +123,19 @@ export const publications: Publication[] = [
     venue: "In Progress",
     description: "Framework for writing, executing, and verifying the safety and correctness of GPU programs in Lean.",
     links: {
-      github: "#"
+      // paper: "#",
+      github: "https://github.com/riyazahuja/clean"
     },
     inProgress: true
   },
   {
     id: "agora",
     title: "Agora: Market-Based Multi-Agent Automated Mathematical Discovery",
-    authors: "Riyaz Ahuja, Alexander Heckett, Shivansh Gour, Alexander Willoughby, Tate Rowney, Ishin Shah, Christian Su",
+    authors: "Riyaz Ahuja, Alexander Heckett, Shivansh Gour, Alexander Willoughby, Tate Rowney, Ishin Shah, Chris Su",
     venue: "In Progress",
     description: "Market-based multi-agent mathematical discovery platform for collaborative human-AI research in formal mathematics at scale.",
     links: {
-      website: "#"
+      website: "https://stagiralabs.com"
     },
     inProgress: true
   },
@@ -143,7 +147,8 @@ export const otherProjects: OtherProject[] = [
     title: "CohesiveGalois",
     description: "Proof and formalization that the Shape functor in Cohesive ∞-Topoi is not conservative in Lean",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/cohesive_galois",
+      paper: "/assets/cohesion_galois_writeup.pdf"
     }
   },
   // {
@@ -159,7 +164,8 @@ export const otherProjects: OtherProject[] = [
     title: "LeanM2",
     description: "Type bridge and tactics to connect Macaulay2 to Lean for computational algebraic geometry",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/lean-m2",
+      paper: "/assets/leanm2_writeup.pdf"
     }
   },
   {
@@ -167,7 +173,7 @@ export const otherProjects: OtherProject[] = [
     title: "Whitney-Graustein Theorem",
     description: "Formalization of the Whitney-Graustein theorem in Lean",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/Whitney-Graustein-Theorem"
     }
   },
   {
@@ -175,15 +181,15 @@ export const otherProjects: OtherProject[] = [
     title: "Baire Category Theorem",
     description: "Formalization of the Baire Category theorem and applications in Lean",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/Baire-Category-Theorem"
     }
   },
   {
-    id: "kernanous",
-    title: "Kernanous",
+    id: "keraunos",
+    title: "Keraunos",
     description: "Autonomous drone swarm navigation and targeting system",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/Keraunos"
     }
   },
   {
@@ -191,7 +197,7 @@ export const otherProjects: OtherProject[] = [
     title: "Orbisol",
     description: "Orbital debris tracking and collision avoidance software",
     links: {
-      github: "#"
+      github: "https://github.com/riyazahuja/Orbisol"
     }
   }
 ]
@@ -202,7 +208,7 @@ export const talks: Talk[] = [
     venue: "L3",
     title: "ImProver2",
     links: {
-      slides: "#"
+      slides: "/assets/improver2_slides.pptx"
     }
   },
   {
@@ -210,7 +216,8 @@ export const talks: Talk[] = [
     venue: "Categorical Logic group",
     title: "Kripke-Joyal Semantics",
     links: {
-      slides: "#"
+      slides: "/assets/kripke_joyal_slides.pdf",
+      paper: "/assets/kripke_joyal_writeup.pdf"
     }
   },
   {
@@ -218,7 +225,8 @@ export const talks: Talk[] = [
     venue: "Algebraic Geometry group",
     title: "LeanM2",
     links: {
-      slides: "#"
+      slides: "/assets/leanm2_slides.pdf",
+      paper: "/assets/leanm2_writeup.pdf"
     }
   },
   {
@@ -226,7 +234,7 @@ export const talks: Talk[] = [
     venue: "L3",
     title: "How to build a (useful) theorem prover",
     links: {
-      slides: "#"
+      slides: "/assets/how_to_make_prover_slides.pptx"
     }
   },
   {
@@ -234,7 +242,7 @@ export const talks: Talk[] = [
     venue: "L3",
     title: "ImProver",
     links: {
-      slides: "#"
+      slides: "/assets/improver_slides.pptx"
     }
   },
   {
@@ -242,7 +250,7 @@ export const talks: Talk[] = [
     venue: "Differential topology group",
     title: "Sard's theorem",
     links: {
-      slides: "#"
+      paper: "/assets/sard_writeup.pdf",
     }
   }
 ]
@@ -251,14 +259,14 @@ export const pastWork: PastWork[] = [
   {
     id: "expii",
     organization: "Expii",
-    description: "Educational technology platform for interactive math and science learning",
-    link: "#"
+    description: "Edtech platform for gamifying interactive math learning",
+    link: "https://www.expii.com/"
   },
   {
     id: "purple-hand",
     organization: "The Purple Hand",
-    description: "Student-led organization focused on accessibility and inclusion",
-    link: "#"
+    description: "501(c)(3) nonprofit for using data to fight human trafficking",
+    // link: "#"
   }
 ]
 
