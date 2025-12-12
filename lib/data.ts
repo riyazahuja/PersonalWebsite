@@ -123,7 +123,7 @@ export const publications: Publication[] = [
     venue: "In Progress",
     description: "Framework for writing, executing, and verifying the safety and correctness of GPU programs in Lean.",
     links: {
-      // paper: "#",
+      paper: "/assets/clean_writeup.pdf",
       github: "https://github.com/riyazahuja/clean"
     },
     inProgress: true
