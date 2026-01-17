@@ -4,11 +4,11 @@ import { Mail, Github, Linkedin, Twitter, FileText } from "lucide-react"
 
 export default function AboutSection() {
   const socialLinks = [
-    { icon: Mail, href: "mailto:riyaz@example.com", label: "Email" },
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: FileText, href: "#", label: "CV" },
+    { icon: Mail, href: "mailto:ahujariyaz05@gmail.com", label: "Email" },
+    { icon: Github, href: "https://github.com/riyazahuja", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/riyaz-ahuja/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com/riyaz_ahuja", label: "Twitter" },
+    { icon: FileText, href: "/assets/cv.pdf", label: "CV" },
   ]
 
   return (
