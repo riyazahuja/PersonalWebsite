@@ -106,15 +106,26 @@ export const publications: Publication[] = [
   },
   {
     id: "improver2",
-    title: "ImProver²: Iteratively Self-Improving SLM's for Neurosymbolic Proof Optimization",
-    authors: "Riyaz Ahuja, Tate Rowney, Jeremy Avigad, Prasad Tetali, Sean Welleck",
-    venue: "In Progress",
+    title: "ImProver 2: Iteratively Self-Improving LM's for Neurosymbolic Proof Optimization",
+    authors: "Riyaz Ahuja, Tate Rowney, Jeremy Avigad, Sean Welleck",
+    venue: "In Submission (ICML 2026)",
     description: "Generalized RL Pipeline for training proof optimizers for the optimization of research-level Lean theorems at scale, across metrics, and at low cost.",
     links: {
-      paper: "#",
+      paper: "/assets/improver2_writeup.pdf",
       github: "https://github.com/riyazahuja/improver"
     },
-    inProgress: true
+    // inProgress: true
+  },
+  {
+    id: "dslean",
+    title: "DSLean: A Framework for Type-Correct Interoperability Between Lean 4 and External DSLs",
+    authors: "Tate Rowney, Riyaz Ahuja, Jeremy Avigad, Sean Welleck",
+    venue: "In Submission (ITP 2026)",
+    description: "A framework for bidirectional translation between the Lean proof assistant and external DSLs for interactive computating in formal theorem proving.",
+    links: {
+      paper: "https://arxiv.org/abs/2602.18657",
+      github: "https://github.com/taterowney/DSLean"
+    },
   },
   {
     id: "clean",
@@ -135,7 +146,7 @@ export const publications: Publication[] = [
     venue: "In Progress",
     description: "Market-based multi-agent mathematical discovery platform for collaborative human-AI research in formal mathematics at scale.",
     links: {
-      website: "https://stagiralabs.com"
+      website: "https://agora.stagiralabs.com"
     },
     inProgress: true
   },
