@@ -54,41 +54,50 @@ export interface PastWork {
 
 // ----------------  Personal Portfolio Data  ----------------
 export const newsItems: NewsItem[] = [
+
   {
     id: "news-1",
+    date: "2026-4-20",
+    description: "Defended my Master's!",
+    link: "/assets/proof_optimization_writeup.pdf"
+  },
+  {
+    id: "news-2",
+    date: "2026-3-18",
+    description: "Accepted an offer to work on AWS Trainium and Neuron compiler",
+  },
+  {
+    id: "news-3",
+    date: "2026-3-15",
+    description: "Accepted a PhD position at Stanford",
+  },
+  {
+    id: "news-4",
+    date: "2026-3-1",
+    description: "Multi-agent theorem proving paper released",
+    link: "/assets/matp_writeup.pdf"
+  },
+  {
+    id: "news-5",
+    date: "2026-2-14",
+    description: "Inducted into Phi Beta Kappa",
+  },
+  {
+    id: "news-6",
+    date: "2026-1-29",
+    description: "ImProver2 released",
+    link: "/assets/improver2_writeup.pdf"
+  },
+  {
+    id: "news-7",
     date: "2025-11-30",
     description: "cLean milestone report released",
     link: "https://github.com/riyazahuja/clean"
   },
   {
-    id: "news-2",
+    id: "news-8",
     date: "2025-09-23",
     description: "Named as an ACS Scholar",
-    // link: "#"
-  },
-  {
-    id: "news-3",
-    date: "2025-09-10",
-    description: "Public release of Agora v0.1",
-    link: "https://agora.stagiralabs.com"
-  },
-  {
-    id: "news-4",
-    date: "2025-04-24",
-    description: "Won the Richard A. Moore Award in Mathematical Sciences",
-    // link: "#"
-  },
-  {
-    id: "news-5",
-    date: "2025-04-24",
-    description: "Presented ImProver at ICLR 2025 in Singapore",
-    link: "https://iclr.cc/virtual/2025/poster/28980"
-  },
-  {
-    id: "news-6",
-    date: "2025-04-07",
-    description: "Attended the Simons Institute and SLMath joint workshop on AI for Mathematics",
-    link: "https://simons.berkeley.edu/workshops/simons-institute-theory-computing-slmath-joint-workshop-ai-mathematics-theoretical"
   }
 ]
 
@@ -114,7 +123,6 @@ export const publications: Publication[] = [
       paper: "/assets/improver2_writeup.pdf",
       github: "https://github.com/riyazahuja/improver"
     },
-    // inProgress: true
   },
   {
     id: "dslean",
@@ -126,6 +134,38 @@ export const publications: Publication[] = [
       paper: "https://arxiv.org/abs/2602.18657",
       github: "https://github.com/taterowney/DSLean"
     },
+  },
+  {
+    id: "proof-optimization",
+    title: "Neural Proof Optimization",
+    authors: "Riyaz Ahuja",
+    venue: "",
+    description: "Master's Thesis on Neural Proof Optimization.",
+    links: {
+      paper: "/assets/proof_optimization_writeup.pdf"
+    },
+  },
+  {
+    id: "matp",
+    title: "Multi-Agent Theorem Proving",
+    authors: "Riyaz Ahuja, Shivansh Gour",
+    venue: "",
+    description: "Multi-agent reinforcement learning and game theory for decentralized theorem proving.",
+    links: {
+      paper: "/assets/matp_writeup.pdf",
+    },
+    // inProgress: true
+  },
+  {
+    id: "unity",
+    title: "Unity: Multi-Agent Collaborative Autoformalization",
+    authors: "Shivansh Gour, Riyaz Ahuja, Jeremy Avigad, Sean Welleck",
+    venue: "In Progress",
+    description: "Multi-agent, low-cost, collaborative autoformalization platform.",
+    links: {
+      github: "https://github.com/s-os/unity"
+    },
+    inProgress: true
   },
   {
     id: "clean",
@@ -154,6 +194,15 @@ export const publications: Publication[] = [
 
 export const otherProjects: OtherProject[] = [
   {
+    id: "alphafold",
+    title: "When to trust AlphaFold",
+    description: "Analysis and reproduction of AlphaFold2 predictions",
+    links: {
+      // github: "https://github.com/riyazahuja/cohesive_galois",
+      paper: "/assets/alphafold_writeup.pdf"
+    }
+  },
+  {
     id: "cohesivegalois",
     title: "CohesiveGalois",
     description: "Proof and formalization that the Shape functor in Cohesive ∞-Topoi is not conservative in Lean",
@@ -162,14 +211,6 @@ export const otherProjects: OtherProject[] = [
       paper: "/assets/cohesion_galois_writeup.pdf"
     }
   },
-  // {
-  //   id: "metaprover",
-  //   title: "MetaProver",
-  //   description: "Unified SDK for Neural Theorem Proving in Lean",
-  //   links: {
-  //     github: "#"
-  //   }
-  // },
   {
     id: "leanm2",
     title: "LeanM2",
@@ -214,6 +255,14 @@ export const otherProjects: OtherProject[] = [
 ]
 
 export const talks: Talk[] = [
+  {
+    id: "matp-talk",
+    venue: "Language Technologies Institute",
+    title: "Multi-Agent Theorem Proving",
+    links: {
+      slides: "/assets/matp_slides.pdf"
+    }
+  },
   {
     id: "improver2-talk",
     venue: "L3",
